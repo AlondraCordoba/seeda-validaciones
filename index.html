@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Validación de Entradas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="background-container">
+    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="" >
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <div class="container d-flex justify-content-center" style="position: relative; z-index: 100;">
+        <form class="py-5 col-9 m-3 px-5 rounded border-info shadow-lg" name="form" style="background-color: rgba(255, 255, 255, 0.712)">
+            <h4 class="text-center">Control de Empleados</h4>
+            <div class="form-group" id="form-Nombre">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="inputNomb" class="form-control" placeholder="Alondra Cordoba">
+                <div class="d-none" id="msjNombre"></div>
+            </div>
+            <div class=" form-group" id="form-Usuario">
+                <label for="usuario">Numero de empleado</label>
+                <input type="text" name="usuario" class="form-control" placeholder="ac022" minlength="6"
+                    maxlength="10">
+                <div class="d-none" id="msjUsuario"></div>
+            </div>
+            <div class="container d-flex border">
+                <div class="form-group col-4">
+                    <label for="sueld">Sueldo</label>
+                    <input type="text" name="inputSueldo" id="form-sueld" class="form-control">
+                    <div class="d-none" id="msjSueld"></div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="sueld">Horas de trabajo</label>
+                    <input type="text" name="inputHoras" id="form-horas" class="form-control">
+                    <div class="d-none"></div>
+                </div>
+
+                <div class="form-group col-4">
+                    <label for="cpass">RFC</label>
+                    <input type="text" name="rfc" id="rfc" class="form-control"  placeholder="COEW010712254">
+                    <div class="d-none" id="msjCpass"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ocupacion">Ocupación</label>
+                <input type="text" name="ocupacion" id="ocupacion" class="form-control"
+                    placeholder="Desarrollador, PO, SM">
+                <div class="d-none" id="msjOcupacion"></div>
+            </div>
+            <button type="submit" id="btn" class="btn btn-outline-dark btn-block"><b>Registrar información</b></button>
+        </form>
+    </div>
+    <div class="container d-flex justify-content-center text-center">
+        <div class="alert alert-warning py-5 col-6 m-3 px-5" role="alert" style="background-color:rgba(238, 232, 212, 0.76); position: relative; z-index: 100;">
+            <strong>IDGS 8A - SEEDA</strong> Wendy Alondra Cordoba Esparza - 191286.
+        </div>
+    </div>
+</div>
+
+    <script>
+        (function(){
+            var miFormulario = document.getElementsByName('form')[0],
+            TomarElementos = miFormulario.elements,
+            boton = document.getElementById('btn');
+
+            var validarNombre= function(e){
+                if(miFormulario.inputNomb.value==0){
+                    alert('¡Ingresa un nombre por favor!');
+                    e.preventDefault();
+                }
+            }
+
+            var validarSueldo = function(e){
+                if(miFormulario.inputSueldo.value<5186 || miFormulario.inputSueldo.value>36302){
+                    alert('Ingrese un sueldo que NO sea menor a $5,186 y que NO sea mayor a $36,302');
+                    e.preventDefault();
+                }
+            }
+
+            var validarHorasT = function(e){
+                if(miFormulario.inputHoras.value<8 || miFormulario.inputHoras.value>16){
+                    alert('Las horas de trabajo NO deben ser menor a 8 y NO deben ser mayor a 16');
+                    e.preventDefault();
+                }
+            }
+
+            var validar = function(e){
+                validarNombre(e);
+                validarSueldo(e);
+                validarHorasT(e);
+
+            }
+
+            miFormulario.addEventListener("submit", validar);
+        }())
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
